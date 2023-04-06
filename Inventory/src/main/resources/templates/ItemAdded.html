@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Aperture Enterprises Inventory Software</title>
+</head>
+<link th:href="@{styling/Output.css}" rel="stylesheet">
+<body>
+	<div class="header">
+		<img class="logo" src="images/inventory.jpeg">
+		<h1 class="title">Aperture Enterprises Inventory Software</h1>
+		<div class="header-right">
+			<a href="./deleteItem">Delete</a> <a href="./purchase">Record
+				Purchase</a> <a href="./addItem">Add</a><a class="active" href="./home">Home</a>
+
+		</div>
+	</div>
+	<h2 th:text="${message}"></h2>
+	<br>
+	<button th:onclick="|window.location.href='/home'|">Go Home</button>
+	<br>
+	<br>
+	<button th:onclick="|window.location.href='/addItem'|">Add Another Item</button>
+</body>
+</html>

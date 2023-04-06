@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<link th:href="@{styling/DeleteItem.css}" rel="stylesheet">
+<body>
+	<div class="header">
+		<img class="logo" src="images/inventory.jpeg">
+		<h1 class="title">Aperture Enterprises Inventory Software</h1>
+		<div class="header-right">
+			<a href="./deleteItem">Delete</a> <a href="./purchase">Record
+				Purchase</a> <a href="./addItem">Add</a><a class="active" href="./home">Home</a>
+
+		</div>
+	</div>
+	<div class="delete-form">
+		<form action="#" th:action="@{./itemDeleted}" th:object="${command3}"
+			method="post">
+			<h1>Enter name of item and quantity</h1>
+			Name : <input type="text" th:field="*{name}"> <br>
+			Quantity : <input type="text" th:field="*{quantity}"><br>
+
+			<button type="submit" value="Delete item">Delete</button>
+			<br>
+			<br>
+			<a href="./home">Go Back</a>
+		</form>
+	</div>
+</body>
+</html>

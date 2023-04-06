@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Aperture Enterprises Inventory Software</title>
+<link th:href="@{styling/Home.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="header">
+		<img class="logo" src="images/inventory.jpeg">
+		<h1>Aperture Enterprises Inventory Software</h1>
+		<div class="header-right">
+			<a href="./deleteItem">Delete</a> <a href="./purchase">Record
+				Purchase</a> <a href="./addItem">Add</a><a class="active" href="./home">Home</a>
+		</div>
+	</div>
+	<br>
+	<div class="items">
+		<form class="search" method="get" action="#" th:action="@{/home}">
+			 <input type="text" style="width: 100px;" name="name" />
+			<button type="submit">Search</button>
+			<br> <br>
+		</form>
+		<form method="post" action="#" th:action="@{/home}">
+			 <select name="category">
+				<option value="">-- All categories --</option>
+				<option th:each="category : ${categories}" th:value="${category}"
+					th:text="${category}" />
+			</select>
+			<button type="submit">Filter</button>
+		</form>
+		<br> <br>
+		<button class="ei"
+			th:onclick="|window.location.href='/exportInventory'|">Export
+			inventory</button>
+		<br> <br>
+		<button class="ei" th:onclick="|window.location.href='/exportSales'|">Export
+			Sales Report</button>
+		<br> <br>
+	</div>
+	<div th:if="${errorMessage}">
+		<p th:text="${errorMessage}" class="error-message"></p>
+	</div>
+
+	<div th:if="${searchedItem != null}">
+		<table class="table" border="1">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Category</th>
+				<th>Stock Quantity</th>
+				<th>Cost Price</th>
+				<th>Quantity Sold</th>
+			</tr>
+			<tr class="table-content">
+				<td th:text="${searchedItem.id}"></td>
+				<td th:text="${searchedItem.name}"></td>
+				<td th:text="${searchedItem.price}"></td>
+				<td th:text="${searchedItem.category}"></td>
+				<td th:text="${searchedItem.quantity}"></td>
+				<td th:text="${searchedItem.costPrice}"></td>
+				<td th:text="${searchedItem.quantitySold}"></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="table" border="1">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Category</th>
+				<th>Stock Quantity</th>
+				<th>Cost Price</th>
+				<th>Quantity Sold</th>
+			</tr>
+			<tr class="table-content" th:each="item : ${items}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.price}"></td>
+				<td th:text="${item.category}"></td>
+				<td th:text="${item.quantity}"></td>
+				<td th:text="${item.costPrice}"></td>
+				<td th:text="${item.quantitySold}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

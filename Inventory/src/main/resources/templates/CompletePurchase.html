@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<link th:href="@{styling/Purchase.css}" rel="stylesheet">
+<body>
+	<div class="header">
+		<img class="logo" src="images/inventory.jpeg">
+		<h1 class="title">Aperture Enterprises Inventory Software</h1>
+		<div class="header-right">
+			<a href="./deleteItem">Delete</a> <a href="./purchase">Record
+				Purchase</a> <a href="./addItem">Add</a><a class="active" href="./home">Home</a>
+
+		</div>
+	</div>
+	<div class="purchase-form">
+	<form action="#" th:action="@{./purchaseComplete}"
+		th:object="${command1}" method="post">
+		<h1>Enter id and quantity to record purchase</h1>
+		Item ID : <input type="text" th:field="*{id}"> <br>
+		Quantity : <input type="text" th:field="*{quantity}"><br>
+		<button type="submit" value="Record purchase">Record Purchase</button>
+		<br>
+		<br>
+		<a href="./home">Go Back</a>
+	</form>
+	</div>
+</body>
+</html>
